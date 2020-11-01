@@ -20,6 +20,13 @@ class ClassificationMetrics:
                 return self._auc(y_true=y_true, y_pred=y_proba)
             else:
                 raise Exception("y_proba cannot be None for AUC!")
+
+        if metric == "logloss":
+            if y_proba is not None:
+                return self._logloss(y_true=y_true, y_pred=y_proba)
+            else:
+                raise Exception("y_proba cannot be None for logloss!")
+
         else:
             return self.metrics[metric](y_true=y_true, y_pred=y_pred)
 
